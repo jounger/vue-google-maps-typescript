@@ -1,7 +1,30 @@
 {
   "name": "vue-google-maps-typescript",
+  "description": "Google map component for Vue with Typescript",
   "version": "0.1.0",
-  "private": true,
+	"author": {
+		"name": "Nguyen Van An",
+		"email": "nguyenvanan.12a8@gmail.com"
+	},
+	"keywords": [
+		"google",
+    "maps",
+    "google-maps",
+    "vue",
+    "typescript",
+    "vue-typescript",
+    "vue-google-maps"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:jounger/vue-google-maps-typescript.git"
+	},
+	"license": "MIT",
+	"main": "./lib/cjs/index.js",
+	"types": "./lib/types/index.d.ts",
+  "module": "./lib/esm/index.js",
+  "unpkg": "dist/unpkg/index.min.js",
+	"sideEffects": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
