@@ -27,17 +27,15 @@ export default class GoogleMapLoader extends Vue {
 
   initializeMap() {
     const mapContainer = this.googleMap;
-    if (this.google != null)
+    if (this.google != null) {
       this.map = new this.google.maps.Map(mapContainer, this.mapConfig);
-    console.log("map", this.map);
+    }
   }
 
   async mounted() {
     console.log("GoogleMapLoader");
-    // https://vuejs.org/v2/cookbook/practical-use-of-scoped-slots.html
     const googleMapLoader = await this.loader.load();
     this.google = googleMapLoader;
-    console.log("google", this.google);
     this.initializeMap();
   }
 }
