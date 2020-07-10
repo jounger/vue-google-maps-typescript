@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue, Ref, Prop } from "vue-property-decorator";
 import { Loader, google } from "google-maps";
-import { GoogleMapConfig } from "../models/map-config";
+import { GoogleMapConfig } from "@/models/map-config";
 
 @Component
 export default class GoogleMapLoader extends Vue {

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "@/views/Home.vue";
+import GoogleMapTest from "@/views/GoogleMapTest.vue";
 
 Vue.use(VueRouter);
 
@@ -8,7 +8,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "",
     name: "Vue-google-maps-typescript",
-    component: Home
+    component: GoogleMapTest
   }
 ];
 
