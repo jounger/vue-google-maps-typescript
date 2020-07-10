@@ -18,7 +18,7 @@ export default class GoogleMapMarker extends Vue {
     val: google.maps.MarkerOptions,
     oldVal: google.maps.MarkerOptions
   ) {
-    console.log("marker change");
+    // console.log("marker change");
     const valPos = val.position as google.maps.LatLng;
     const oldValPos = oldVal.position as google.maps.LatLng;
     if (
@@ -31,7 +31,7 @@ export default class GoogleMapMarker extends Vue {
   }
 
   mounted() {
-    console.log("GoogleMapMarker", this.marker.position);
+    // console.log("GoogleMapMarker", this.marker.position);
     this.mapMarker = new this.google.maps.Marker({
       position: this.marker.position,
       map: this.map,

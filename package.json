@@ -1,7 +1,7 @@
 {
   "name": "vue-google-maps-typescript",
   "description": "Google map component for Vue with Typescript",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": {
     "name": "Nguyen Van An",
     "email": "nguyenvanan.12a8@gmail.com"

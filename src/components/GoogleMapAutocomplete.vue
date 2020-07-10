@@ -39,7 +39,7 @@ export default class GoogleMapAutocomplete extends Vue {
   }
 
   mounted() {
-    console.log("GoogleMapAutocomplete");
+    // console.log("GoogleMapAutocomplete");
     const autocomplete = new this.google.maps.places.Autocomplete(this.input);
     if (this.countries && this.countries.length > 0) {
       autocomplete.setComponentRestrictions({ country: this.countries });

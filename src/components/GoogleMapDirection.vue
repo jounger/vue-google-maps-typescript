@@ -16,7 +16,7 @@ export default class GoogleMapDirection extends Vue {
 
   @Watch("router")
   onRouterChange(val: google.maps.DirectionsRequest) {
-    console.log("router change", val);
+    // console.log("router change", val);
     if (typeof val != "undefined") {
       const valOriginPlace = val.origin as google.maps.LatLng;
       const valDestinationPlace = val.destination as google.maps.LatLng;
@@ -39,7 +39,7 @@ export default class GoogleMapDirection extends Vue {
   }
 
   mounted() {
-    console.log("GoogleMapDirection", this.router);
+    // console.log("GoogleMapDirection", this.router);
     this.directionsService = new this.google.maps.DirectionsService();
     this.directionsRenderer = new this.google.maps.DirectionsRenderer();
     this.directionsRenderer.setMap(this.map);
