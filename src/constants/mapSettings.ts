@@ -1,4 +1,4 @@
-export const apiKey = "YOUR-API-KEY";
+export const apiKey = "AIzaSyCUVKUm3ZYlamzuzt3ON58HcKuCm6WSnFw";
 
 export const mapSettings: object = {
   zoom: 0,

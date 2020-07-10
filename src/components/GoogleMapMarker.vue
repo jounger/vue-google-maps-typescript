@@ -25,6 +25,7 @@ export default class GoogleMapMarker extends Vue {
       this.mapMarker &&
       (valPos.lat != oldValPos.lat || valPos.lng != oldValPos.lng)
     ) {
+      this.mapMarker.setMap(null);
       this.mapMarker.setPosition(this.marker.position as google.maps.LatLng);
       this.mapMarker.setVisible(true);
     }

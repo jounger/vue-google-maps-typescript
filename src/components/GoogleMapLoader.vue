@@ -8,27 +8,25 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Ref, Prop } from "vue-property-decorator";
-import { Loader, LoaderOptions, google } from "google-maps";
-import { apiKey } from "@/constants/mapSettings";
+import { Loader, google } from "google-maps";
+import { GoogleMapConfig } from "../models/map-config";
 
 @Component
 export default class GoogleMapLoader extends Vue {
-  @Ref() googleMap!: HTMLDivElement;
-  @Prop() mapConfig!: object;
+  @Ref() readonly googleMap!: HTMLDivElement;
+  @Prop() readonly options!: GoogleMapConfig;
+  @Prop({ default: "" }) readonly apiKey!: string;
 
   google = null as google | null;
   map = null as google.maps.Map<HTMLDivElement> | null;
-  options: LoaderOptions = {
-    language: "vi",
-    region: "VI",
-    libraries: ["places", "drawing", "visualization", "geometry"]
-  };
-  loader = new Loader(apiKey, this.options);
+  loader = new Loader(this.apiKey, this.options.loaderOptions);
 
   initializeMap() {
-    const mapContainer = this.googleMap;
     if (this.google != null) {
-      this.map = new this.google.maps.Map(mapContainer, this.mapConfig);
+      this.map = new this.google.maps.Map(
+        this.googleMap,
+        this.options.mapOptions
+      );
     }
   }
 

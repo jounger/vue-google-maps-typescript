@@ -11,10 +11,10 @@ import { google } from "google-maps";
 
 @Component
 export default class GoogleMapAutocomplete extends Vue {
-  @Prop() google!: google;
-  @Prop() map!: google.maps.Map<HTMLDivElement>;
-  @Prop() countries!: Array<string>;
-  @Prop() input!: HTMLInputElement;
+  @Prop() readonly google!: google;
+  @Prop() readonly map!: google.maps.Map<HTMLDivElement>;
+  @Prop() readonly countries!: Array<string>;
+  @Prop() readonly input!: HTMLInputElement;
   @PropSync("place", { type: Object })
   placeSync!: google.maps.places.PlaceResult;
 
@@ -48,7 +48,7 @@ export default class GoogleMapAutocomplete extends Vue {
     // Set the data fields to return when the user selects a place.
     autocomplete.setFields(["address_components", "geometry", "icon", "name"]);
     autocomplete.addListener("place_changed", () => {
-      const placeResult = autocomplete.getPlace();
+      const placeResult = Object.assign({}, autocomplete.getPlace());
       this.placeSync = placeResult;
       this.placeLocal = placeResult;
       this.address = this.getAddressFromPlace(placeResult);

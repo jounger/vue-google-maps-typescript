@@ -7,9 +7,9 @@ import { google } from "google-maps";
 
 @Component
 export default class GoogleMapDirection extends Vue {
-  @Prop() google!: google;
-  @Prop() map!: google.maps.Map<HTMLDivElement>;
-  @Prop() router!: google.maps.DirectionsRequest;
+  @Prop() readonly google!: google;
+  @Prop() readonly map!: google.maps.Map<HTMLDivElement>;
+  @Prop() readonly router!: google.maps.DirectionsRequest;
 
   directionsService = null as google.maps.DirectionsService | null;
   directionsRenderer = null as google.maps.DirectionsRenderer | null;
