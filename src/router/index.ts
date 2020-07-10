@@ -6,10 +6,32 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "",
-    name: "Vue-google-maps-typescript",
-    component: GoogleMapTest
-  }
+    path: "/test/",
+    name: "Google Map Test Component",
+    component: GoogleMapTest,
+    children: [
+      {
+        path: "marker",
+        name: "Marker",
+        component: () => import("@/views/MarkerTest.vue")
+      },
+      {
+        path: "autocomplete",
+        name: "Autocomplete",
+        component: () => import("@/views/AutocompleteTest.vue")
+      },
+      {
+        path: "direction",
+        name: "Direction",
+        component: () => import("@/views/DirectionTest.vue")
+      },
+      {
+        path: "distance-matrix",
+        name: "Distance Matrix",
+        component: () => import("@/views/DistanceMatrixTest.vue")
+      }
+    ]
+  },
 ];
 
 const router = new VueRouter({

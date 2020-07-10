@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="google-map" ref="googleMap"></div>
+    <div class="google-map" ref="googleMap" :style="mapStyle"></div>
     <template v-if="Boolean(this.google) && Boolean(this.map)">
       <slot :google="google" :map="map" />
     </template>
@@ -16,6 +16,8 @@ export default class GoogleMapLoader extends Vue {
   @Ref() readonly googleMap!: HTMLDivElement;
   @Prop() readonly options!: GoogleMapConfig;
   @Prop({ default: "" }) readonly apiKey!: string;
+  @Prop({ default: { width: "400px", height: "300px" } })
+  readonly mapStyle!: object;
 
   google = null as google | null;
   map = null as google.maps.Map<HTMLDivElement> | null;
@@ -38,10 +40,3 @@ export default class GoogleMapLoader extends Vue {
   }
 }
 </script>
-<style lang="css">
-.google-map {
-  width: 700px;
-  height: 500px;
-  margin: 0 auto;
-}
-</style>

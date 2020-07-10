@@ -21,27 +21,26 @@ export default class GoogleMapDistanceMatrix extends Vue {
   distanceLocal = null as google.maps.DistanceMatrixResponse | null;
   distanceMatrixService = new this.google.maps.DistanceMatrixService();
 
-  @Watch("routers", { immediate: true, deep: true })
+  @Watch("routers", { immediate: true })
   onRouterChange(val: google.maps.DistanceMatrixRequest) {
     console.log("routers change", val);
-    if (typeof val != "undefined") {
-      const valOriginsPlaces = val.origins as google.maps.LatLng[];
-      const valDestinationsPlaces = val.destinations as google.maps.LatLng[];
+    if (typeof val !== "undefined") {
+      const cloneVal = Object.assign({}, val);
+      const valOriginsPlaces = cloneVal.origins as google.maps.LatLng[];
+      const valDestinationsPlaces = cloneVal.destinations as google.maps.LatLng[];
       if (
         this.distanceMatrixService &&
         valOriginsPlaces.length > 0 &&
         valDestinationsPlaces.length > 0
       ) {
         if (this.single) {
-          this.routers.origins = [
-            valOriginsPlaces[valOriginsPlaces.length - 1]
-          ];
-          this.routers.destinations = [
+          cloneVal.origins = [valOriginsPlaces[valOriginsPlaces.length - 1]];
+          cloneVal.destinations = [
             valDestinationsPlaces[valDestinationsPlaces.length - 1]
           ];
         }
         this.distanceMatrixService.getDistanceMatrix(
-          this.routers,
+          cloneVal,
           this.responseService
         );
       }
@@ -55,8 +54,9 @@ export default class GoogleMapDistanceMatrix extends Vue {
     if (status === "OK") {
       console.log("DistanceMatrix request success " + status);
       const distanceResult = Object.assign({}, response);
-      this.distanceLocal = distanceResult;
+      // TODO: solve error trigger loop in @Watch("routers")
       // this.distanceSync = distanceResult;
+      this.distanceLocal = distanceResult;
       console.log(response);
     } else {
       console.log("DistanceMatrix request failed due to " + status);
